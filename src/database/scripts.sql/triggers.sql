@@ -84,3 +84,41 @@ BEGIN
     INSERT INTO Bitacora (nombreUsuario, fecha, hora, actividad)
     VALUES (@nombreUsuario, @fecha, @hora, CONCAT('Se eliminó la cita con id ', @idCita));
 END;
+
+CREATE TRIGGER VerificarConflictoCitas
+ON Citas
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF EXISTS (
+        SELECT 1
+        FROM Citas c1
+        JOIN Citas c2 ON c1.id_doctor = c2.id_doctor AND c1.fecha = c2.fecha AND c1.hora = c2.hora
+        WHERE c1.id_cita <> c2.id_cita
+    )
+    BEGIN
+        ROLLBACK TRANSACTION;
+        THROW 50000, 'Conflicto detectado: el doctor ya tiene una cita en esa fecha y hora.', 1;
+    END
+END;
+
+CREATE TRIGGER VerificarConflictoCitas
+ON Citas
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF EXISTS (
+        SELECT 1
+        FROM Citas c1
+        JOIN Citas c2 ON c1.id_doctor = c2.id_doctor AND c1.fecha = c2.fecha AND c1.hora = c2.hora
+        WHERE c1.id_cita <> c2.id_cita
+    )
+    BEGIN
+        ROLLBACK TRANSACTION;
+        THROW 50000, 'Conflicto detectado: el doctor ya tiene una cita en esa fecha y hora.', 1;
+    END
+END;

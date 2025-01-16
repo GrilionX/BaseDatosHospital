@@ -51,3 +51,36 @@ BEGIN
         PRINT 'La cita no cumple con las condiciones de tiempo.';
     END
 END;
+
+CREATE PROCEDURE ListarCitasPaciente
+    @IdPaciente INT
+AS
+BEGIN
+    SELECT fecha, hora, id_doctor
+    FROM Citas
+    WHERE id_paciente = @IdPaciente;
+END;
+
+CREATE PROCEDURE ListarCitasPaciente
+    @IdPaciente INT
+AS
+BEGIN
+    SELECT fecha, hora, id_doctor
+    FROM Citas
+    WHERE id_paciente = @IdPaciente;
+END;
+
+CREATE PROCEDURE sp_registrarUsuario
+    @nombre VARCHAR(50),
+    @correo VARCHAR(50),
+    @contraseña VARCHAR(255),
+    @tipoUsuario VARCHAR(20)
+AS
+BEGIN
+    -- Insertar el nuevo usuario en la base de datos
+    INSERT INTO Usuarios (nombre, correo, contraseña, tipoUsuario)
+    VALUES (@nombre, @correo, @contraseña, @tipoUsuario);
+    
+    -- Confirmar que se registró correctamente
+    SELECT 'Usuario registrado con éxito';
+END;

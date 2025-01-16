@@ -1,40 +1,29 @@
-from utils.styles import print_title
-from database.conection_db import get_connection
 import tkinter as tk
 from tkinter import messagebox
 from UI.menu.users.recepcionista import mostrar_menu_recepcionista
 from UI.menu.users.doctor import mostrar_menu_doctor
 from UI.menu.users.paciente import mostrar_menu_paciente
 
-def iniciar_aplicacion():
-    def autenticar():
-        usuario = entrada_usuario.get()
-        contrasena = entrada_contrasena.get()
+def mostrar_pantalla_inicio():
+    def abrir_recepcionista():
+        ventana_inicio.destroy()
+        mostrar_menu_recepcionista()
 
-        if usuario == "recepcionista":
-            ventana.destroy()
-            mostrar_menu_recepcionista()
-        elif usuario == "doctor":
-            ventana.destroy()
-            mostrar_menu_doctor()
-        elif usuario == "paciente":
-            ventana.destroy()
-            mostrar_menu_paciente()
-        else:
-            messagebox.showerror("Error", "Credenciales incorrectas")
+    def abrir_doctor():
+        ventana_inicio.destroy()
+        mostrar_menu_doctor()
 
-    ventana = tk.Tk()
-    ventana.title("Sistema de Citas Hospitalarias")
+    def abrir_paciente():
+        ventana_inicio.destroy()
+        mostrar_menu_paciente()
 
-    tk.Label(ventana, text="Usuario:").grid(row=0, column=0)
-    entrada_usuario = tk.Entry(ventana)
-    entrada_usuario.grid(row=0, column=1)
+    ventana_inicio = tk.Tk()
+    ventana_inicio.title("Sistema de Gestión Hospitalaria")
 
-    tk.Label(ventana, text="Contraseña:").grid(row=1, column=0)
-    entrada_contrasena = tk.Entry(ventana, show="*")
-    entrada_contrasena.grid(row=1, column=1)
+    tk.Label(ventana_inicio, text="Selecciona el tipo de usuario").pack(pady=10)
 
-    tk.Button(ventana, text="Iniciar Sesión", command=autenticar).grid(row=2, column=1)
+    tk.Button(ventana_inicio, text="Recepcionista", command=abrir_recepcionista).pack(pady=5)
+    tk.Button(ventana_inicio, text="Doctor", command=abrir_doctor).pack(pady=5)
+    tk.Button(ventana_inicio, text="Paciente", command=abrir_paciente).pack(pady=5)
 
-    ventana.mainloop()
-
+    ventana_inicio.mainloop()

@@ -1,7 +1,7 @@
-from conection_db import get_connection
+from database.conection_db import obtener_conexion
 
 def agregar_cita(id_paciente, id_doctor, fecha, hora):
-    conexion =get_connection()
+    conexion = obtener_conexion()
     if not conexion:
         return False
 
@@ -14,13 +14,13 @@ def agregar_cita(id_paciente, id_doctor, fecha, hora):
         conexion.commit()
         return True
     except Exception as e:
-        print("Error al agregar cita:", e)
+        print("Error al agendar cita:", e)
         return False
     finally:
         conexion.close()
 
 def listar_citas_paciente(id_paciente):
-    conexion = get_connection()
+    conexion = obtener_conexion()
     if not conexion:
         return []
 
@@ -29,13 +29,13 @@ def listar_citas_paciente(id_paciente):
         cursor.execute("SELECT fecha, hora, id_doctor FROM Citas WHERE id_paciente = ?", id_paciente)
         return cursor.fetchall()
     except Exception as e:
-        print("Error al listar citas:", e)
+        print("Error al mostrar citas:", e)
         return []
     finally:
         conexion.close()
 
 def agregar_historial(id_paciente, descripcion):
-    conexion = get_connection()
+    conexion = obtener_conexion()
     if not conexion:
         return False
 
@@ -48,7 +48,7 @@ def agregar_historial(id_paciente, descripcion):
         conexion.commit()
         return True
     except Exception as e:
-        print("Error al agregar historial:", e)
+        print("Error al agregar registro:", e)
         return False
     finally:
         conexion.close()

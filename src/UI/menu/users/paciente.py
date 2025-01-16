@@ -1,5 +1,5 @@
 import tkinter as tk
-from database import listar_citas_paciente
+from database.operaciones import listar_citas_paciente
 
 def mostrar_menu_paciente():
     def consultar_citas():

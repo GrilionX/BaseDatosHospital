@@ -1,4 +1,4 @@
-from UI.menu.main_menu import display_main_menu
+from login import mostrar_menu_inicio
 
 if __name__ == "__main__":
-    display_main_menu()
+    mostrar_menu_inicio()
