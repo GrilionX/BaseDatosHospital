@@ -1,0 +1,48 @@
+gestorhospitalmictlan/
+|--config/
+|   |--config.py
+|--database/
+|   |--scripts/
+|   |   |--function.sql
+|   |   |--procedure.sql
+|   |   |--sp.sql
+|   |   |--tables.sql
+|   |   |--triggers.sql
+|   |--connection_db.py
+|--docs/
+|   |--architecture_diagram.png
+|   |--database_schema.sql
+|   |--README.md
+|--operations/
+|   |--appointments.py
+|   |--billing.py
+|   |--inventory.py
+|--src/
+|   |--main.py
+|--test/
+|   |--test_database.py
+|   |--test_operations.py
+|   |--test_UI.py
+|--UI/
+|   |--menu/
+|   |   |--main_menu.py
+|   |   |--bitacora_menu.py
+|   |--users/
+|       |--doctor.py
+|       |--farmaceutico.py
+|       |--paciente.py
+|       |--recepcionista.py
+|--users/
+|   |--doctor/
+|   |--farmaceutico/
+|   |--paciente/
+|   |--recepcionista/
+|--utils/
+|   |--date_utils.py
+|   |--logging_utils.py
+|--README.md
+
+
+
+
+
