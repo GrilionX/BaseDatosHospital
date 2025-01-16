@@ -9,7 +9,7 @@ def initialize_database():
         'database/function.sql',
         'database/triggers.sql',
         'database/procedures.sql',
-        'database/views.sql'
+        #'database/views.sql'
     ]
 
     connection = get_connection()
