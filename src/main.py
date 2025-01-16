@@ -3,14 +3,13 @@ import os
 
 
 def initialize_database():
-    """
-    Inicializa la base de datos ejecutando los scripts en orden.
-    """
+
     script_paths = [
         'database/tables.sql',
-        'database/functions.sql',
+        'database/function.sql',
         'database/triggers.sql',
-        'database/procedures.sql'
+        'database/procedures.sql',
+        'database/views.sql'
     ]
 
     connection = get_connection()

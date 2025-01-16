@@ -4,7 +4,7 @@ def get_connection():
     try:
         connection = pyodbc.connect(
             'DRIVER={ODBC Driver 17 for SQL Server};'
-            'SERVER=localhost;'  # Cambia localhost si el servidor tiene otro nombre
+            'SERVER=localhost;' 
             'DATABASE=HospitalGestion2;'
             'Trusted_Connection=yes;'
         )
